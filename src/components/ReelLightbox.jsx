@@ -13,6 +13,8 @@ export default function ReelLightbox({ index, setIndex }) {
   )
 
   useEffect(() => {
+    if (index === null) return undefined
+
     const onKey = (e) => {
       if (e.key === 'Escape') close()
       if (e.key === 'ArrowLeft') prev()
@@ -24,7 +26,7 @@ export default function ReelLightbox({ index, setIndex }) {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
     }
-  }, [close, prev, next])
+  }, [index, close, prev, next])
 
   if (index === null) return null
   const reel = reels[index]
